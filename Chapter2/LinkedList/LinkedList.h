@@ -1,5 +1,5 @@
-#ifndef HASH_MAP_H
-#define HASH_MAP_H
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
 #include <iostream>
 #include <vector>
 
