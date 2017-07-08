@@ -67,3 +67,20 @@ std::vector<Data> LinkedList<Data>::values() {
 
   return listValues;
 }
+
+template<class Data>
+int LinkedList<Data>::kthToLast(int k) {
+  return kthToLast(this->head, k);
+}
+
+template<class Data>
+int LinkedList<Data>::kthToLast(Node *node, int k) {
+  if (node == NULL)
+    return 0;
+
+  int pos = kthToLast(node->next, k) + 1;
+  if (pos == k)
+    std::cout << "Found: " << node->data << std::endl;
+
+  return pos;
+}
