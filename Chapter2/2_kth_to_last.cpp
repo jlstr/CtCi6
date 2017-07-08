@@ -4,7 +4,6 @@
 using namespace std;
 
 int main() {
-
   LinkedList<char> list;
 
   list.append('a');
@@ -13,6 +12,9 @@ int main() {
   list.append('d');
   list.append('e');
 
-  cout << list.kthToLast(2)->data << endl;
+  int k = 1;
+  bool found = (list.kthToLast(k) != NULL);
+
+  cout << (found ? string(1, list.kthToLast(k)->data) : "Not Found") << endl;
   return 0;
 }
