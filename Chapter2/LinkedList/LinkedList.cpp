@@ -69,18 +69,16 @@ std::vector<Data> LinkedList<Data>::values() {
 }
 
 template<class Data>
-int LinkedList<Data>::kthToLast(int k) {
-  return kthToLast(this->head, k);
-}
+const typename LinkedList<Data>::Node* LinkedList<Data>::kthToLast(int k) {
+  Node *tmp = head, *kth = head;
 
-template<class Data>
-int LinkedList<Data>::kthToLast(Node *node, int k) {
-  if (node == NULL)
-    return 0;
+  for (int i = 0; i < k; ++i) // Move a pointer k places
+    tmp = tmp->next;
 
-  int pos = kthToLast(node->next, k) + 1;
-  if (pos == k)
-    std::cout << "Found: " << node->data << std::endl;
+  while (tmp != NULL) { // Then move the 2 pointers at the same rate
+    tmp = tmp->next;
+    kth = kth->next;
+  }
 
-  return pos;
+  return kth;
 }

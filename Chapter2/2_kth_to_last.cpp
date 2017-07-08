@@ -13,6 +13,6 @@ int main() {
   list.append('d');
   list.append('e');
 
-  cout << list.kthToLast(1) << endl;
+  cout << list.kthToLast(2)->data << endl;
   return 0;
 }

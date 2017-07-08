@@ -26,10 +26,7 @@ class LinkedList {
   void print();
   bool remove(const Data&);
   std::vector<Data> values();
-  int kthToLast(int);
-
-  private:
-  int kthToLast(Node*, int);
+  const Node* kthToLast(int);
 };
 
 #endif
