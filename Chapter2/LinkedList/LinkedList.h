@@ -11,13 +11,12 @@ class LinkedList {
   LinkedList(); // constructor
   // ~LinkedList(); // destructor
 
-  private:
-  
   struct Node {
     Data data;
     Node *next;
   };
 
+  private:
   Node *head;
 
   public:
@@ -26,7 +25,7 @@ class LinkedList {
   void print();
   bool remove(const Data&);
   std::vector<Data> values();
-  const Node* kthToLast(int);
+  Node* kthToLast(int);
 };
 
 #endif

@@ -69,7 +69,7 @@ std::vector<Data> LinkedList<Data>::values() {
 }
 
 template<class Data>
-const typename LinkedList<Data>::Node* LinkedList<Data>::kthToLast(int k) {
+typename LinkedList<Data>::Node* LinkedList<Data>::kthToLast(int k) {
   Node *tmp = head, *kth = head;
 
   for (int i = 0; i < k; ++i) // Move a pointer k places
