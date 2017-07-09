@@ -18,6 +18,7 @@ class LinkedList {
 
   private:
   Node *head;
+  int numElements;
 
   public:
 
@@ -27,6 +28,7 @@ class LinkedList {
   std::vector<Data> values();
   Node* kthToLast(int);
   LinkedList<Data> partition(int);
+  int size();
 };
 
 #endif

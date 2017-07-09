@@ -4,6 +4,7 @@
 template<class Data>
 LinkedList<Data>::LinkedList() {
   this->head = NULL;
+  this->numElements = 0;
 }
 
 template<class Data>
@@ -11,6 +12,8 @@ void LinkedList<Data>::append(const Data &data) {
   Node *node = new Node();
   node->data = data;
   node->next = NULL;
+  // Increase num-elements count
+  this->numElements++;
   
   if (head == NULL) {
     head = node;
@@ -24,11 +27,16 @@ void LinkedList<Data>::append(const Data &data) {
 }
 
 template<class Data>
+int LinkedList<Data>::size() {
+  return this->numElements;
+}
+
+template<class Data>
 void LinkedList<Data>::print() {
   for (Node *ptr = head; ptr != NULL; ptr = ptr->next)
     std::cout << ptr->data << "  -->  ";
 
-  std::cout << "NULL" << std::endl;
+  std::cout << "END" << std::endl;
 }
 
 template<class Data>

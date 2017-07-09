@@ -16,7 +16,6 @@ int main() {
   list.print();
 
   LinkedList<int>::Node *node = list.kthToLast(2);
-
   removeNode(node);
 
   list.print();
