@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include <vector>
 
 template<class Data>
 LinkedList<Data>::LinkedList() {
@@ -81,4 +82,29 @@ typename LinkedList<Data>::Node* LinkedList<Data>::kthToLast(int k) {
   }
 
   return kth;
+}
+
+template<class Data>
+LinkedList<Data> LinkedList<Data>::partition(int x) {
+  LinkedList<Data> lower;
+  LinkedList<Data> higher;
+
+  int highCount = 0;
+
+  for (Node *node = head; node != NULL; node = node->next) {
+    if (node->data < x)
+      lower.append(node->data);
+    else {
+      // If node->data is equal to x it should prepend instead.
+      higher.append(node->data);
+      highCount++;
+    }
+  }
+
+  Node *lastLower = lower.kthToLast(1);
+  Node *firstHigher = higher.kthToLast(highCount);
+  // Merge both lists
+  lastLower->next = firstHigher;
+
+  return lower;
 }

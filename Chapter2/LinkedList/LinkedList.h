@@ -26,6 +26,7 @@ class LinkedList {
   bool remove(const Data&);
   std::vector<Data> values();
   Node* kthToLast(int);
+  LinkedList<Data> partition(int);
 };
 
 #endif
