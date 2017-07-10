@@ -4,20 +4,48 @@
 using namespace std;
 
 bool isPalindrome(LinkedList<char>&);
+LinkedList<char> reverse(LinkedList<char>::Node*);
+bool isPalindrome(LinkedList<char>&, LinkedList<char>&);
 
 int main() {
 
   LinkedList<char> list;
 
-  list.append('s');
-  list.append('e');
-  list.append('e');
-  list.append('s');
-
+  list.append('p');
+  list.append('o');
+  list.append('o');
+  list.append('p');
   list.print();
-  cout << "is palindrome: " << (isPalindrome(list) ? "YES" : "NO") << endl;
+
+  LinkedList<char> reversed = reverse(list.kthToLast(list.size()));
+  cout << "is palindrome: " << (isPalindrome(list, reversed) ? "YES" : "NO") << endl;
 
   return 0;
+}
+
+// THIS IS HOW YOU REVERSE A LINKED-LIST (SINGLY) RECURSIVELY!
+LinkedList<char> reverse(LinkedList<char>::Node *node) {
+  if (node == NULL)
+    return LinkedList<char>();
+
+  LinkedList<char> list = reverse(node->next);
+  list.append(node->data);
+
+  return list;
+}
+
+bool isPalindrome(LinkedList<char> &list, LinkedList<char> &reversed) {
+  LinkedList<char>::Node *head1 = list.kthToLast(list.size()), *head2 = reversed.kthToLast(reversed.size());
+
+  while (head1 != NULL && head2 != NULL) {
+    if (head1->data != head2->data)
+      return false;
+
+    head1 = head1->next;
+    head2 = head2->next;
+  }
+
+  return true;
 }
 
 bool isPalindrome(LinkedList<char> &list) {
