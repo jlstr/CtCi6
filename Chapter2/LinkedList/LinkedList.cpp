@@ -27,6 +27,23 @@ void LinkedList<Data>::append(const Data &data) {
 }
 
 template<class Data>
+void LinkedList<Data>::prepend(const Data &data) {
+  Node *node = new Node();
+  node->data = data;
+  node->next = NULL;
+  // Increase num-elements count
+  this->numElements++;
+
+  if (head == NULL) {
+    head = node;
+    return;
+  }
+
+  node->next = head;
+  head = node;
+}
+
+template<class Data>
 int LinkedList<Data>::size() {
   return this->numElements;
 }

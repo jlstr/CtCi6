@@ -23,6 +23,7 @@ class LinkedList {
   public:
 
   void append(const Data&);
+  void prepend(const Data&);
   void print();
   bool remove(const Data&);
   std::vector<Data> values();
