@@ -2,6 +2,7 @@
 #define LINKED_LIST_H
 #include <iostream>
 #include <vector>
+#include <map>
 
 template<class Data>
 class LinkedList {
@@ -18,11 +19,12 @@ class LinkedList {
 
   private:
   Node *head;
-  int numElements;
 
   public:
 
   void append(const Data&);
+  void append(Node*);
+
   void prepend(const Data&);
   void print();
   bool remove(const Data&);
@@ -30,6 +32,8 @@ class LinkedList {
   Node* kthToLast(int);
   LinkedList<Data> partition(int);
   int size();
+  Node* loopingNode();
+  
 };
 
 #endif

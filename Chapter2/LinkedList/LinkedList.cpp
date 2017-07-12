@@ -4,7 +4,6 @@
 template<class Data>
 LinkedList<Data>::LinkedList() {
   this->head = NULL;
-  this->numElements = 0;
 }
 
 template<class Data>
@@ -12,9 +11,20 @@ void LinkedList<Data>::append(const Data &data) {
   Node *node = new Node();
   node->data = data;
   node->next = NULL;
-  // Increase num-elements count
-  this->numElements++;
   
+  if (head == NULL) {
+    head = node;
+    return;
+  }
+
+  Node *ptr;
+  for (ptr = head; ptr->next != NULL; ptr = ptr->next);
+
+  ptr->next = node;
+}
+
+template<class Data>
+void LinkedList<Data>::append(Node *node) {
   if (head == NULL) {
     head = node;
     return;
@@ -31,8 +41,6 @@ void LinkedList<Data>::prepend(const Data &data) {
   Node *node = new Node();
   node->data = data;
   node->next = NULL;
-  // Increase num-elements count
-  this->numElements++;
 
   if (head == NULL) {
     head = node;
@@ -45,7 +53,11 @@ void LinkedList<Data>::prepend(const Data &data) {
 
 template<class Data>
 int LinkedList<Data>::size() {
-  return this->numElements;
+  int numElements = 0;
+  for (Node *node = head; node != NULL; node = node->next)
+    numElements++;
+
+  return numElements;
 }
 
 template<class Data>
@@ -132,4 +144,22 @@ LinkedList<Data> LinkedList<Data>::partition(int x) {
   lastLower->next = firstHigher;
 
   return lower;
+}
+
+template<class Data>
+typename LinkedList<Data>::Node* LinkedList<Data>::loopingNode() {
+  std::map<Data, Node*> nodes;
+  Node *node = head;
+
+  while (true && node != NULL) {
+    if (nodes.count(node->data)) {
+      if (nodes[node->data] == node)
+        return node;
+    } else {
+      nodes[node->data] = node;
+      node = node->next;
+    }
+  }
+
+  return NULL;
 }
