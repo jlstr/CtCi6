@@ -52,6 +52,11 @@ void LinkedList<Data>::prepend(const Data &data) {
 }
 
 template<class Data>
+bool LinkedList<Data>::empty() {
+  return head == NULL;
+}
+
+template<class Data>
 int LinkedList<Data>::size() {
   int numElements = 0;
   for (Node *node = head; node != NULL; node = node->next)
@@ -162,4 +167,27 @@ typename LinkedList<Data>::Node* LinkedList<Data>::loopingNode() {
   }
 
   return NULL;
+}
+
+template<class Data>
+void LinkedList<Data>::removeTail() {
+  Node *tail = kthToLast(1);
+
+  if (size() == 1)
+    head = NULL;
+
+  else if (size() > 1) {
+    Node *tmp;
+    for (tmp = head; tmp->next != tail; tmp = tmp->next);
+    tmp->next = NULL;
+  }
+
+  delete tail;
+}
+
+template<class Data>
+void LinkedList<Data>::removeHead() {
+  Node *tmp = head;
+  head = head->next;
+  delete tmp;
 }
