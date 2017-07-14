@@ -19,6 +19,7 @@ class Stack {
   void push(const Data&);
   bool empty();
   void pop();
+  Data min();
   
 };
 

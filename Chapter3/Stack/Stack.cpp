@@ -17,10 +17,11 @@ Data Stack<Data>::peek() {
 template<class Data>
 void Stack<Data>::push(const Data &data) {
   this->linkedList.append(data);
+
   if (this->minStack.empty())
     this->minStack.append(data);
-  else if (data < this->minStack.kthToLast(1)->data){
-
+  else if (data < this->minStack.kthToLast(1)->data) {
+    this->minStack.append(data);
   }
 }
 
@@ -32,4 +33,9 @@ bool Stack<Data>::empty() {
 template<class Data>
 void Stack<Data>::pop() {
   this->linkedList.removeTail();
+}
+
+template<class Data>
+Data Stack<Data>::min() {
+  return this->minStack.kthToLast(1)->data;
 }
