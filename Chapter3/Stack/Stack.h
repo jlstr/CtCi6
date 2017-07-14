@@ -12,6 +12,7 @@ class Stack {
 
   private:
   LinkedList<Data> linkedList;
+  LinkedList<Data> minStack;
   
   public:
   Data peek();

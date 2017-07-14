@@ -17,6 +17,11 @@ Data Stack<Data>::peek() {
 template<class Data>
 void Stack<Data>::push(const Data &data) {
   this->linkedList.append(data);
+  if (this->minStack.empty())
+    this->minStack.append(data);
+  else if (data < this->minStack.kthToLast(1)->data){
+
+  }
 }
 
 template<class Data>

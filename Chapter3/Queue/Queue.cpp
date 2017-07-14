@@ -18,7 +18,7 @@ void Queue<Data>::remove() {
 template<class Data>
 Data Queue<Data>::peek() {
   if (this->linkedList.empty())
-    throw std::length_error("Empty Stack");
+    throw std::length_error("Empty Queue");
 
   typename LinkedList<Data>::Node *node = this->linkedList.kthToLast(this->linkedList.size());
   return node->data;
