@@ -25,6 +25,6 @@ bool isUnique(const std::string str) {
       }
     }
   }
-  
+
   return uniqueString;
 }
