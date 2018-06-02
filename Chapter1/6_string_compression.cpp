@@ -30,7 +30,7 @@ string compressString(const string &str) {
 
   buffer << str[str.size() - 1] << charCount;
 
-  if (buffer.str().size() > str.size()) 
+  if (buffer.str().size() > str.size())
     return str;
 
   return buffer.str();
