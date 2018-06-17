@@ -63,6 +63,6 @@ LinkedList<int> sum(LinkedList<int>& A, LinkedList<int> &B) {
 
   if (hasRemainder)
     result.append(1);
-  
+
   return result;
 }
