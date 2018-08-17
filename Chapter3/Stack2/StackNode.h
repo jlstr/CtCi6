@@ -15,7 +15,7 @@ public:
 private:
   T data;
   StackNode *next;
-  StackNode *min;
+  T min;
 };
 
 #endif

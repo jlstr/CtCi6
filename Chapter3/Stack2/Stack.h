@@ -14,6 +14,7 @@ public:
   T peek();
   bool isEmpty();
   void print();
+  T min();
 
 private:
   StackNode<T> *head;
