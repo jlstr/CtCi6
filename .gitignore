@@ -1,3 +1,11 @@
+
+# Should go first
+*
+!/**/
+!*.*
+
+# Then Specific Ignores
+
 .DS_Store
 *.swp
 *.out
