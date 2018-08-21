@@ -3,8 +3,9 @@
 
 template<class T>
 Stack<T>::Stack() {
+  std::cout << "new Stack()" << std::endl;
   this->head = nullptr;
-  this->size = 0;
+  this->itemCount = 0;
 };
 
 template<class T>
@@ -23,7 +24,7 @@ void Stack<T>::push(T item) {
     }
   }
 
-  this->size++;
+  this->itemCount++;
 }
 
 template<class T>
@@ -35,7 +36,7 @@ void Stack<T>::pop() {
   this->head = this->head->next;
 
   delete tmp;
-  this->size--;
+  this->itemCount--;
 }
 
 template<class T>
@@ -48,7 +49,7 @@ T Stack<T>::peek() {
 
 template<class T>
 bool Stack<T>::isEmpty() {
-  return this->size == 0;
+  return this->itemCount == 0;
 }
 
 template<class T>
@@ -67,4 +68,9 @@ T Stack<T>::min() {
     throw EmptyException();
 
   return this->head->min;
+}
+
+template<class T>
+int Stack<T>::size() {
+  return this->itemCount;
 }

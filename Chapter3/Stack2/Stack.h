@@ -15,9 +15,10 @@ public:
   bool isEmpty();
   void print();
   T min();
+  int size();
 
 private:
   StackNode<T> *head;
-  int size;
+  int itemCount;
 };
 #endif
