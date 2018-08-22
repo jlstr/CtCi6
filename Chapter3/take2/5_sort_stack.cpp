@@ -24,31 +24,19 @@ int main() {
 void sortStack(Stack<int> &stack) {
   Stack<int> auxStack;
 
-  while (!stack.isEmpty()) {
-    int pushes = 0;
+  auxStack.push(stack.peek());
+  stack.pop();
 
+  while (!stack.isEmpty()) {
     int item = stack.peek();
     stack.pop();
 
-    if (auxStack.isEmpty()) {
-      auxStack.push(item);
-  
-    } else {
-    
-      while (!auxStack.isEmpty() && auxStack.peek() > item ) {
-        stack.push(auxStack.peek());
-        auxStack.pop();
-        pushes++;
-      }
-
-      auxStack.push(item);
-
-      while (pushes > 0) {
-        auxStack.push(stack.peek());
-        auxStack.pop();
-        pushes--;
-      }
+    while (!auxStack.isEmpty() && auxStack.peek() > item ) {
+      stack.push(auxStack.peek());
+      auxStack.pop();
     }
+
+    auxStack.push(item);
   }
 
   while (!auxStack.isEmpty()) {
