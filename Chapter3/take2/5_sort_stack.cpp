@@ -31,7 +31,7 @@ void sortStack(Stack<int> &stack) {
     int item = stack.peek();
     stack.pop();
 
-    while (!auxStack.isEmpty() && auxStack.peek() > item ) {
+    while (!auxStack.isEmpty() && auxStack.peek() > item) {
       stack.push(auxStack.peek());
       auxStack.pop();
     }
