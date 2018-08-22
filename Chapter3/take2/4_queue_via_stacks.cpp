@@ -68,8 +68,8 @@ void MyQueue<T>::remove() {
 
 template<class T>
 const T MyQueue<T>::peek() {
-  Stack<T> &currentStack = left;
-  Stack<T> &emptyStack = right;
+  Stack<T> &currentStack = this->left;
+  Stack<T> &emptyStack = this->right;
 
   currentStack = (this->left.isEmpty()) ? this->right : this->left;
   emptyStack = (!this->left.isEmpty()) ? this->right : this->left;

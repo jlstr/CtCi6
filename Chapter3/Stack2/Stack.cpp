@@ -3,7 +3,6 @@
 
 template<class T>
 Stack<T>::Stack() {
-  std::cout << "new Stack()" << std::endl;
   this->head = nullptr;
   this->itemCount = 0;
 };
