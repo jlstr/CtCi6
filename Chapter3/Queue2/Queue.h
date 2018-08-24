@@ -14,11 +14,13 @@ public:
   T peek();
   bool isEmpty();
   void print();
+  void append(Queue&);
+  int size();
 
 private:
   QueueNode<T> *first;
   QueueNode<T> *last;
-  int size;
+  int count;
 };
 
 #endif

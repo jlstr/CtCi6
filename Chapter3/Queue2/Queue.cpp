@@ -6,7 +6,7 @@ template<class T>
 Queue<T>::Queue() {
   this->first = nullptr;
   this->last = nullptr;
-  this->size = 0;
+  this->count = 0;
 }
 
 template<class T>
@@ -21,7 +21,7 @@ void Queue<T>::add(T item) {
     this->last = node;
   }
 
-  this->size++;
+  this->count++;
 }
 
 template<class T>
@@ -39,7 +39,7 @@ void Queue<T>::remove() {
     node->next = nullptr;
   }
 
-  this->size--;
+  this->count--;
   delete node;
 }
 
@@ -53,7 +53,31 @@ T Queue<T>::peek() {
 
 template<class T>
 bool Queue<T>::isEmpty() {
-  return (this->first == nullptr && this->last == nullptr) && this->size == 0;
+  return (this->first == nullptr && this->last == nullptr) && this->count == 0;
+}
+
+template<class T>
+void Queue<T>::append(Queue &queue) {
+  if (queue.isEmpty()) {
+    return;
+  }
+
+  Queue<T> *q = &queue;
+
+  if (this->isEmpty()) {
+    this->first = q->first;
+    this->last = q->last;
+  } else {
+    this->last->next = q->first;
+    this->last = q->last;
+  }
+  
+  this->count += q->size();
+}
+
+template<class T>
+int Queue<T>::size() {
+  return this->count;
 }
 
 template<class T>
@@ -64,7 +88,9 @@ void Queue<T>::print() {
   QueueNode<T> *node = this->first;
 
   while (node != nullptr) {
-    std::cout << node->item << std::endl;
+    std::cout << node->item << "->" << ((node->next == nullptr) ? "NULL" : "");
     node = node->next;
   }
+  
+  std::cout << std::endl;
 }
