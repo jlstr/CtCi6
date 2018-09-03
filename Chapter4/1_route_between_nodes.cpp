@@ -50,7 +50,7 @@ int main() {
   graph.addEdge(0, 2);
   graph.addEdge(0, 1);
   graph.addEdge(2, 1);
-  graph.addEdge(1, 3);
+  // graph.addEdge(1, 3);
 
   bool found = bfs(graph, 0, 3);
 
@@ -80,8 +80,7 @@ bool bfs(Graph &graph, const int &s, const int &v) {
       if (!(*it)->visited) {
 
         if ((*it)->name == v) {
-          found = true;
-          break;
+          return true;
         }
 
         (*it)->visited = true;
