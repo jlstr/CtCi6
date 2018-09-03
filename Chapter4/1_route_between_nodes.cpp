@@ -50,7 +50,7 @@ int main() {
   graph.addEdge(0, 2);
   graph.addEdge(0, 1);
   graph.addEdge(2, 1);
-  // graph.addEdge(1, 3);
+  graph.addEdge(1, 3);
 
   bool found = bfs(graph, 0, 3);
 
@@ -70,7 +70,7 @@ bool bfs(Graph &graph, const int &s, const int &v) {
   // Change the variable to True if node is found.
   bool found = false;
 
-  while (!found && !queue.isEmpty()) {
+  while (!queue.isEmpty()) {
     Node *u = queue.peek();
     queue.remove();
 
