@@ -4,18 +4,14 @@
 #include <vector>
 using namespace std;
 
-/*
-  SIMPLEST GRAPH Representation I could come up with
-*/
-enum Color { WHITE, GREY, BLACK };
-
 struct Node {
-  Node() {
-    this->color = Color::WHITE;
+  Node(const int &name) {
+    this->name = name;
+    this->visited = false;
     this->distance = -1;
   }
 
-  Color color;
+  bool visited;
   int name;
   int distance;
   vector<Node*> adj;
@@ -27,8 +23,7 @@ class Graph {
     this->V = V;
 
     for (int i = 0; i < V; ++i) {
-      Node *node = new Node();
-      node->name = i;
+      Node *node = new Node(i);
       nodes.push_back(node);
     }
   }
@@ -46,44 +41,57 @@ class Graph {
   vector<Node*> nodes;
 };
 
-void bfs(Graph&, const int&);
+bool bfs(Graph&, const int&, const int&);
 
 int main() {
   Graph graph(4);
 
   graph.addEdge(0, 1);
   graph.addEdge(0, 2);
+  graph.addEdge(0, 1);
+  graph.addEdge(2, 1);
   graph.addEdge(1, 3);
-  graph.addEdge(2, 3);
 
-  bfs(graph, 0);
+  bool found = bfs(graph, 0, 3);
+
+  cout << (found ? "TRUE" : "FALSE") << endl;
 
   return 0;
 }
 
-void bfs(Graph &graph, const int &s) {
+bool bfs(Graph &graph, const int &s, const int &v) {
   Queue<Node*> queue;
-  
   Node *node = graph.getNode(s);
-  node->color = Color::GREY;
+  node->visited = true;
   node->distance = 0;
 
   queue.add(node);
 
-  while (!queue.isEmpty()) {
+  // Change the variable to True if node is found.
+  bool found = false;
+
+  while (!found && !queue.isEmpty()) {
     Node *u = queue.peek();
     queue.remove();
 
     vector<Node*>::iterator it = u->adj.begin();
 
     for (; it != u->adj.end(); ++it) {
-      if ((*it)->color == Color::WHITE) {
-        (*it)->color = Color::GREY;
+      if (!(*it)->visited) {
+
+        if ((*it)->name == v) {
+          found = true;
+          break;
+        }
+
+        (*it)->visited = true;
         (*it)->distance = u->distance + 1;
         queue.add(*it);
       }
     }
 
-    u->color = Color::BLACK;
+    u->visited = true;
   }
+
+  return found;
 }
