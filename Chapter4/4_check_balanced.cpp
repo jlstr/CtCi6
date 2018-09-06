@@ -22,8 +22,7 @@ int main() {
   Node *root = new Node(5);
   root->left = new Node(2);
   root->left->left = new Node(1);
-  root->left->left->left = new Node(-1); 
-  
+  root->left->left->left = new Node(-1);
   root->right = new Node(7);
 
   cout << "Is Balanced? " << ((isBalanced(root->left, root->right)) ? "YES" : "NO") << endl;
